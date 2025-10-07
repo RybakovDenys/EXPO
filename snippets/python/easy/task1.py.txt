@@ -1,0 +1,19 @@
+print("Програма для пошуку парних чисел у діапазоні.")
+
+start = int(input("Введіть початкове число: "))
+end = int(input("Введіть кінцеве число: "))
+
+even_numbers = []
+total = 0
+
+print("\nПарні числа у вказаному діапазоні:")
+for number in range(start, end + 1):
+    if number % 2 == 0:
+        even_numbers.append(number)
+        total += number
+        print(number)
+
+print("\nУсього парних чисел:", len(even_numbers))
+print("Сума парних чисел:", total)
+
+print("\nПрограма завершена.")

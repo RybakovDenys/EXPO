@@ -1,0 +1,55 @@
+def input_student_data():
+    students = {}
+    print("Введіть дані студентів (імʼя та оцінка через пробіл).")
+    print("Для завершення введення напишіть 'стоп'.")
+
+    while True:
+        line = input(">> ")
+        if line.lower() == "стоп":
+            break
+
+        parts = line.strip().split()
+        if len(parts) != 2 or not parts[1].isdigit():
+            print("Невірний формат. Введіть у вигляді: Імʼя Оцінка (наприклад: Анна 95)")
+            continue
+
+        name = parts[0]
+        score = int(parts[1])
+
+        if name in students:
+            students[name].append(score)
+        else:
+            students[name] = [score]
+
+    return students
+
+def calculate_averages(students):
+    averages = {}
+    for name, scores in students.items():
+        avg = sum(scores) / len(scores)
+        averages[name] = avg
+    return averages
+
+def print_summary(averages):
+    print("\nСередні оцінки:")
+    for name, avg in sorted(averages.items(), key=lambda x: x[1], reverse=True):
+        print(f"{name}: {avg:.2f}")
+
+    top_score = max(averages.values())
+    top_students = [name for name, avg in averages.items() if avg == top_score]
+
+    print("\nНайкращий результат:")
+    for student in top_students:
+        print(f"{student} — {averages[student]:.2f}")
+
+def main():
+    students = input_student_data()
+    if not students:
+        print("Немає даних для обробки.")
+        return
+
+    averages = calculate_averages(students)
+    print_summary(averages)
+
+if __name__ == "__main__":
+    main()

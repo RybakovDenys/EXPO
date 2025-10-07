@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(NULL));
+    int secret_number = rand() % 100 + 1;  // від 1 до 100
+    int guess;
+    int attempts = 0;
+    const int max_attempts = 7;
+
+    cout << "Guess the number between 1 and 100.\n";
+    cout << "You have " << max_attempts << " attempts.\n";
+
+    while (attempts < max_attempts) {
+        cout << "Enter your guess: ";
+        cin >> guess;
+
+        if (guess < 1 || guess > 100) {
+            cout << "Guess must be between 1 and 100." << endl;
+            continue;
+        }
+
+        attempts++;
+
+        if (guess == secret_number) {
+            cout << "Congratulations! You guessed the number in " << attempts << " attempts.\n";
+            return 0;
+        } else if (guess < secret_number) {
+            cout << "Too low! ";
+        } else {
+            cout << "Too high! ";
+        }
+
+        cout << "Attempts left: " << (max_attempts - attempts) << endl;
+    }
+
+    cout << "Sorry, you've used all attempts. The number was " << secret_number << ".\n";
+    return 0;
+}

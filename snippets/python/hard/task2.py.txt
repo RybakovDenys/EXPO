@@ -1,0 +1,92 @@
+print("Library Book Manager")
+
+books = []
+
+while True:
+    print("\nMenu:")
+    print("1. Add book")
+    print("2. Search books")
+    print("3. Update book")
+    print("4. Remove book")
+    print("5. Show all books")
+    print("6. Exit")
+
+    choice = input("Choose option: ")
+
+    if choice == '1':
+        title = input("Enter book title: ").strip()
+        author = input("Enter author name: ").strip()
+        year = input("Enter publication year: ").strip()
+        if not year.isdigit():
+            print("Year must be a number.")
+            continue
+        books.append({'title': title, 'author': author, 'year': year})
+        print("Book added.")
+
+    elif choice == '2':
+        query = input("Enter title or author to search: ").strip().lower()
+        found = []
+        for book in books:
+            if query in book['title'].lower() or query in book['author'].lower():
+                found.append(book)
+        if not found:
+            print("No books found.")
+        else:
+            print("Search results:")
+            for i, b in enumerate(found, 1):
+                print(f"{i}. {b['title']} by {b['author']} ({b['year']})")
+
+    elif choice == '3':
+        if not books:
+            print("No books to update.")
+            continue
+        print("Books:")
+        for i, b in enumerate(books, 1):
+            print(f"{i}. {b['title']} by {b['author']} ({b['year']})")
+        num = input("Enter book number to update: ")
+        if not num.isdigit() or int(num) < 1 or int(num) > len(books):
+            print("Invalid book number.")
+            continue
+        index = int(num) - 1
+        title = input("Enter new title (leave empty to keep current): ").strip()
+        author = input("Enter new author (leave empty to keep current): ").strip()
+        year = input("Enter new year (leave empty to keep current): ").strip()
+        if year and not year.isdigit():
+            print("Year must be a number.")
+            continue
+        if title:
+            books[index]['title'] = title
+        if author:
+            books[index]['author'] = author
+        if year:
+            books[index]['year'] = year
+        print("Book updated.")
+
+    elif choice == '4':
+        if not books:
+            print("No books to remove.")
+            continue
+        print("Books:")
+        for i, b in enumerate(books, 1):
+            print(f"{i}. {b['title']} by {b['author']} ({b['year']})")
+        num = input("Enter book number to remove: ")
+        if not num.isdigit() or int(num) < 1 or int(num) > len(books):
+            print("Invalid book number.")
+            continue
+        removed = books.pop(int(num) - 1)
+        print(f"Removed book: {removed['title']} by {removed['author']}")
+
+    elif choice == '5':
+        if not books:
+            print("No books in library.")
+        else:
+            print("All books:")
+            for i, b in enumerate(books, 1):
+                print(f"{i}. {b['title']} by {b['author']} ({b['year']})")
+
+    elif choice == '6':
+        print("Exiting.")
+        break
+
+    else:
+        print("Invalid option.")

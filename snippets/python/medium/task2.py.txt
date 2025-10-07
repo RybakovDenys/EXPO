@@ -1,0 +1,41 @@
+print("Simple Calculator with History")
+
+history = []
+
+while True:
+    print("\nMenu:")
+    print("1. Calculate expression")
+    print("2. Show history")
+    print("3. Clear history")
+    print("4. Exit")
+
+    choice = input("Choose option: ")
+
+    if choice == '1':
+        expr = input("Enter expression (e.g. 2 + 3 * 4): ")
+        try:
+            # Обчислюємо вираз
+            result = eval(expr)
+            print("Result:", result)
+            history.append(f"{expr} = {result}")
+        except Exception as e:
+            print("Error in expression:", e)
+
+    elif choice == '2':
+        if not history:
+            print("History is empty.")
+        else:
+            print("Calculation History:")
+            for i, record in enumerate(history, 1):
+                print(f"{i}. {record}")
+
+    elif choice == '3':
+        history.clear()
+        print("History cleared.")
+
+    elif choice == '4':
+        print("Exiting.")
+        break
+
+    else:
+        print("Invalid option.")

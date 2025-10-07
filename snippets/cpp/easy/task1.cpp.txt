@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+void greet_user(const std::string& name) {
+    std::cout << "Hello, " << name << "!" << std::endl;
+}
+
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    std::string name;
+    int number;
+
+    std::cout << "Enter your name: ";
+    std::cin >> name;
+
+    greet_user(name);
+
+    std::cout << "Enter a number to calculate factorial: ";
+    std::cin >> number;
+
+    int result = factorial(number);
+    std::cout << "Factorial of " << number << " = " << result << std::endl;
+
+    return 0;
+}

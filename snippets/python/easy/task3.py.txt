@@ -1,0 +1,28 @@
+contacts = {}
+
+while True:
+    print("\nMenu:\n1. Add contact\n2. Search contact\n3. Display all\n4. Exit")
+    choice = input("Choose option: ")
+
+    if choice == '1':
+        name = input("Enter name: ")
+        phone = input("Enter phone: ")
+        contacts[name] = phone
+        print("Contact added.")
+    elif choice == '2':
+        name = input("Enter name to search: ")
+        if name in contacts:
+            print(f"Found: {name} - {contacts[name]}")
+        else:
+            print("Contact not found.")
+    elif choice == '3':
+        if not contacts:
+            print("No contacts.")
+        else:
+            for n, p in contacts.items():
+                print(f"{n} - {p}")
+    elif choice == '4':
+        print("Exiting.")
+        break
+    else:
+        print("Invalid option.")

@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+bool is_letter(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
+}
+
+int main() {
+    const int max_len = 80;
+    char text[max_len];
+    cout << "Enter a line of text (max 80 chars):\n";
+    cin.getline(text, max_len);
+
+    const int max_words = 20;
+    char words[max_words][max_len];
+    int word_count = 0;
+    int pos = 0;
+
+    while (text[pos] != '\0') {
+        while (text[pos] != '\0' && !is_letter(text[pos])) pos++;
+        if (text[pos] == '\0') break;
+
+        int w_len = 0;
+        while (text[pos] != '\0' && is_letter(text[pos]) && w_len < max_len - 1) {
+            words[word_count][w_len] = text[pos];
+            pos++;
+            w_len++;
+        }
+        words[word_count][w_len] = '\0';
+        word_count++;
+        if (word_count >= max_words) break;
+    }
+
+    cout << "Number of words: " << word_count << "\n";
+    cout << "Words:\n";
+    for (int i = 0; i < word_count; i++) {
+        cout << i + 1 << ": " << words[i] << "\n";
+    }
+
+    return 0;
+}
