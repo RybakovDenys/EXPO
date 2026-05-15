@@ -164,7 +164,7 @@ class LanguageDialog(QDialog):
         self.setStyleSheet("""
             QDialog { background-color: #2b2b3c; color: #f5f5f5; border-radius: 12px; font-family: "Segoe UI", sans-serif; }
             QLabel { font-size: 22px; font-weight: 600; color: #ffffff; }
-            QPushButton { font-size: 18px; padding: 12px 24px; min-height: 44px; border-radius: 12px; font-weight: 600; background-color: #44475a; color: #f8f8f2; border: 2px solid transparent; transition: all 0.2s ease-in-out; }
+            QPushButton { font-size: 18px; padding: 12px 24px; min-height: 44px; border-radius: 12px; font-weight: 600; background-color: #44475a; color: #f8f8f2; border: 2px solid transparent; }
             QPushButton:hover { background-color: #6272a4; border: 2px solid #8be9fd; }
             QPushButton:pressed { background-color: #44475a; border: 2px solid #50fa7b; }
         """)
@@ -277,7 +277,7 @@ class CodeSortingApp(QWidget):
         code_container = QWidget()
         code_container.setObjectName("code_container")
         code_container.setStyleSheet("""
-            #code_container { background-color: rgba(0, 45, 156, 0.2); border-radius: 20px; padding: 16px; background-image: url('assets/faculty.png'); background-position: center; background-repeat: no-repeat; background-size: cover; }
+            #code_container { background-color: rgba(0, 45, 156, 0.2); border-radius: 20px; padding: 16px; background-image: url('assets/faculty.png'); background-position: center; background-repeat: no-repeat; }
         """)
         code_container_layout = QVBoxLayout(code_container)
         self.list_widget = CodeListWidget()
@@ -286,7 +286,7 @@ class CodeSortingApp(QWidget):
         self.list_widget.setSpacing(6)
         self.list_widget.setStyleSheet("""
             QListWidget { background-color: transparent; border: none; font-family: Consolas; font-size: 14px; color: white; }
-            QListWidget::item { padding: 12px; margin: 8px; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 14px; background-color: rgba(10, 10, 10, 0.85); transition: all 0.3s ease; }
+            QListWidget::item { padding: 12px; margin: 8px; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 14px; background-color: rgba(10, 10, 10, 0.85); }
             QListWidget::item:hover { background-color: rgba(30, 30, 30, 0.9); }
             QListWidget::item:selected { background-color: rgba(50, 90, 180, 0.95); border: 1px solid #cccccc; color: white; }
         """)
